@@ -1,5 +1,7 @@
 package com.example.demo.controller
 
+import com.example.demo.service.UserService
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
@@ -8,11 +10,10 @@ import org.springframework.web.bind.annotation.RestController
 @RequestMapping("/")
 class HomeController {
 
+    @Autowired
+    private lateinit var userService: UserService
+
     @GetMapping("")
-    fun home(): Map<String, String> {
-        val res = mutableMapOf<String, String>()
-        res += "greet" to "Hello World"
-        return res
-    }
+    fun home(): Map<String, String> = userService.getMessage()
 
 }
