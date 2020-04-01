@@ -23,9 +23,7 @@ class UserRepository {
         return res
     }
 
-    fun getAllUsers(): List<User> {
-        return users
-    }
+    fun getAllUsers(): List<User> = users
 
     fun getUserByUserId(userId: Int): User {
         return users.firstOrNull { it.userId == userId } ?: User(0, "No User")
@@ -37,5 +35,11 @@ class UserRepository {
         return user
     }
 
-//    fun
+    fun updateUser(user: User): User {
+        return user
+    }
+
+    fun removeUser(userId: Int) {
+        users.removeIf { user -> user.userId == userId }
+    }
 }
